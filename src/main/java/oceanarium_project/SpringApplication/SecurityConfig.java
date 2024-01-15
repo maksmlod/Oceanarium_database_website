@@ -27,11 +27,11 @@ public class SecurityConfig {
         http
                 //.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/","/index").permitAll()
-                        .requestMatchers("/resources/static/**").permitAll()
-                        .requestMatchers("/main").authenticated()
-               //         .requestMatchers("/resources/static/**").permitAll()
-               //         .requestMatchers("/main").authenticated()
+                                .requestMatchers("/","/index").permitAll()
+                                .requestMatchers("/main").authenticated()
+                                //.requestMatchers("/resources/static/**").permitAll()
+                                //.requestMatchers("/resources/static/**").permitAll()
+                                //.requestMatchers("/main").authenticated()
                 )
 
 
@@ -39,38 +39,16 @@ public class SecurityConfig {
                         form -> form
                                 .loginPage("/login")
                                 .loginProcessingUrl("/login")
-                              //  .defaultSuccessUrl("/main")
+                                .defaultSuccessUrl("/main")
                                 .permitAll()
                 )
                 .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .logoutUrl("/index")
+                                //.logoutUrl("/logout")
                                 .logoutSuccessUrl("/login")
                                 .permitAll()
                 );
-
-
-                /*
-                .csrf(AbstractHttpConfigurer::disable)
-
-                //.authorizeHttpRequests((authorize) ->
-                //        authorize.anyRequest().authenticated())
-                .formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                // .loginProcessingUrl("/login")
-                                //.defaultSuccessUrl("/index")
-                                .permitAll()
-                )
-                .logout(
-                        logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .permitAll()
-                                .logoutUrl("/index")
-                                .logoutSuccessUrl("/index")
-                );
-                */
 
         return http.build();
     }
@@ -95,39 +73,3 @@ public class SecurityConfig {
 
 
 }
-
-/*
-////////////////////////////////
-DLA TEGO DZIALAJĄ STARE HTML:
-////////////////////////////////////////
-
-
-
-public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                //.csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/","/index").permitAll()
-               //         .requestMatchers("/resources/static/**").permitAll()
-               //         .requestMatchers("/main").authenticated()
-                                .anyRequest().authenticated()
-                )
-
-
-                .formLogin(
-                        form -> form
-                                .loginPage("/login")
-                                .loginProcessingUrl("/login")
-                              //  .defaultSuccessUrl("/main")
-                                .permitAll()
-                )
-                .logout(
-                        logout -> logout
-                                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                             //   .logoutUrl("/logout")
-                            //    .logoutSuccessUrl("/login")
-                                .permitAll()
-                );
-        return http.build();
-                }
- */
