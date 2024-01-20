@@ -3,10 +3,38 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
+  <meta charset="UTF-8">
   <title>Welcome Page</title>
 </head>
 <body>
 <h1>Welcome!</h1>
 <p>Click <a th:href="@{/main}">here</a> to see a Main Page.</p>
+
+<div align="center">
+  <h1> Adresy </h1>
+  <a href="/new_form">Wprowadz nowy adres</a>
+  <!-- Table -->
+  <table border = "1" cellpadding = "10"> <!-– border –
+    obramowanie, cellpadding – rozmiar komórki -->
+    <!-- Table header -->
+    <thead>
+    <tr> <!-- Table row -->
+      <th>ID</th> <!–- Table column -->
+      <th>Miejscowosc</th>
+      <th>Kod pocztowy</th>
+      <th>Ulica</th>
+    </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+    <tr th:each = "adres : ${listAdres}">
+      <td th:text = "${adres.id}">ID</td>
+      <td th:text = "${adres.miejscowosc}">Miejscowosc</td>
+      <td th:text = "${adres.kod_pocztowy}">Kod pocztowy</td>
+      <td th:text = "${adres.ulica}">Ulica</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
