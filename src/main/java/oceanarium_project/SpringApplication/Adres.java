@@ -10,7 +10,7 @@ import org.hibernate.annotations.GeneratorType;
 
 public class Adres {
 
-    private int id;
+    private int nr_adresu;
     private String miejscowosc;
     private String kod_pocztowy;
     private String ulica;
@@ -20,8 +20,8 @@ public class Adres {
     public Adres() {
     }
 
-    public Adres(int id, String miejscowosc, String kod_pocztowy, String ulica, int nr_budynku, int nr_lokalu) {
-        this.id = id;
+    public Adres(int nr_adresu, String miejscowosc, String kod_pocztowy, String ulica, int nr_budynku, int nr_lokalu) {
+        this.nr_adresu = nr_adresu;
         this.miejscowosc = miejscowosc;
         this.kod_pocztowy = kod_pocztowy;
         this.ulica = ulica;
@@ -29,23 +29,13 @@ public class Adres {
         this.nr_lokalu = nr_lokalu;
     }
 
-    public Adres(int id, String miejscowosc, String kod_pocztowy, String ulica, int nr_budynku) {
-        this.id = id;
-        this.miejscowosc = miejscowosc;
-        this.kod_pocztowy = kod_pocztowy;
-        this.ulica = ulica;
-        this.nr_budynku = nr_budynku;
-        this.nr_lokalu = 0;
+    public int getNr_adresu() {
+        return nr_adresu;
     }
 
-    public int getId() {
-        return id;
+    public void setNr_adresu(int nr_adresu) {
+        this.nr_adresu = nr_adresu;
     }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getMiejscowosc() {
         return miejscowosc;
     }
@@ -89,7 +79,7 @@ public class Adres {
     @Override
     public String toString() {
         return "Adres{" +
-                "id=" + id +
+                "nr_adresu=" + nr_adresu +
                 ", miejscowosc='" + miejscowosc + '\'' +
                 ", kod_pocztowy='" + kod_pocztowy + '\'' +
                 ", ulica='" + ulica + '\'' +

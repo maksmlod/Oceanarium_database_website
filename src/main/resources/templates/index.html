@@ -13,29 +13,36 @@
 <div align="center">
   <h1> Adresy </h1>
   <a href="/new">Enter new adress</a>
+  <br/><br/>
   <!-- Table -->
   <table border = "1" cellpadding = "10"> <!-– border –
     obramowanie, cellpadding – rozmiar komórki -->
     <!-- Table header -->
     <thead>
     <tr> <!-- Table row -->
-      <th>ID</th> <!–- Table column -->
+      <th>Nr adresu</th> <!–- Table column -->
       <th>Miejscowosc</th>
       <th>Kod pocztowy</th>
       <th>Ulica</th>
       <th>Nr budynku</th>
       <th>Nr lokalu</th>
+      <th>Operacja</th>
     </tr>
     </thead>
     <!-- Table body -->
     <tbody>
     <tr th:each = "adres : ${listAdres}">
-      <td th:text = "${adres.id}">ID</td>
+      <td th:text = "${adres.nr_adresu}">Numer adresu</td>
       <td th:text = "${adres.miejscowosc}">Miejscowosc</td>
       <td th:text = "${adres.kod_pocztowy}">Kod pocztowy</td>
       <td th:text = "${adres.ulica}">Ulica</td>
       <td th:text = "${adres.nr_budynku}">Nr budynku</td>
       <td th:text = "${adres.nr_lokalu}">Nr lokalu</td>
+      <td>
+        <a th:href="@{'/edit/' + ${adres.nr_adresu}}">Edit</a>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a th:href="@{'/delete/' + ${adres.nr_adresu}}">Delete</a>
+      </td>
     </tr>
     </tbody>
   </table>
