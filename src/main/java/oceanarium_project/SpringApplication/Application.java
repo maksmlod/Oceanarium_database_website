@@ -5,20 +5,22 @@ import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {SecurityAutoConfiguration.class })
 public class Application {
 	@Autowired private static JdbcTemplate jdbcTemplate;
 
 	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(Application.class, args);
+		run();
 
-		//run();
+	//	run();
 	}
 
 	public static void runSqlStatement(String sql) throws SQLException {
@@ -30,9 +32,10 @@ public class Application {
 	}
 
 	public static void run() throws SQLException {
-		deleteAllData();
+		//deleteAllData();
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa','09-234','Mazowiecka','26','8')");
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa2','09-234','Mazowiecka','26','8')");
+		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa3','09-234','Mazowiecka','26','8')");
 	}
 
 	public static void deleteAllData() throws SQLException {

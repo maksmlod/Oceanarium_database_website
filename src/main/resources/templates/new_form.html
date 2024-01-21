@@ -12,24 +12,30 @@
     <br/>
     <form action="#" th:action="@{/save}" th:object="${adres}" method="post">
         <table border = "1" cellpadding="10">
-
             <tr>
-                <td>Adres: miejscowosc</td>
-                <td><input type="text" th:field="+{miejscowosc}"></td>
+                <td>Miejscowosc:</td>
+                <td><input type="text" th:field="*{miejscowosc}"></td>
             </tr>
             <tr>
-                <td>Adres: kod pocztowy</td>
-                <td><input type="text" th:field="+{kod_pocztowy}"></td>
+                <td>Kod pocztowy:</td>
+                <td><input type="text" th:field="*{kod_pocztowy}"></td>
             </tr>
             <tr>
-                <td>Adres: ulica</td>
-                <td><input type="text" th:field="+{ulica}"></td>
+                <td>Ulica:</td>
+                <td><input type="text" th:field="*{ulica}"></td>
             </tr>
+            <tr>
+                <td>Numer budynku:</td>
+                <td><input type="text" th:field="*{nr_budynku}"></td>
+            </tr>
+            <tr>
+                <td>Numer lokalu:</td>
+                <td><input type="text" th:field="*{nr_lokalu}"></td>
+            </tr>
+            <!-- Button save -->
             <tr>
                 <td colspan="2"><button type="submit">Save</button></td>
             </tr>
-
-
         </table>
     </form>
 </div>

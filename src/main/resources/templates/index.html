@@ -12,7 +12,7 @@
 
 <div align="center">
   <h1> Adresy </h1>
-  <a href="/new_form">Wprowadz nowy adres</a>
+  <a href="/new">Enter new adress</a>
   <!-- Table -->
   <table border = "1" cellpadding = "10"> <!-– border –
     obramowanie, cellpadding – rozmiar komórki -->
@@ -23,6 +23,8 @@
       <th>Miejscowosc</th>
       <th>Kod pocztowy</th>
       <th>Ulica</th>
+      <th>Nr budynku</th>
+      <th>Nr lokalu</th>
     </tr>
     </thead>
     <!-- Table body -->
@@ -32,6 +34,8 @@
       <td th:text = "${adres.miejscowosc}">Miejscowosc</td>
       <td th:text = "${adres.kod_pocztowy}">Kod pocztowy</td>
       <td th:text = "${adres.ulica}">Ulica</td>
+      <td th:text = "${adres.nr_budynku}">Nr budynku</td>
+      <td th:text = "${adres.nr_lokalu}">Nr lokalu</td>
     </tr>
     </tbody>
   </table>
