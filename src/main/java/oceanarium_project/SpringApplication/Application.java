@@ -18,8 +18,6 @@ public class Application {
 
 	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(Application.class, args);
-		run();
-
 	//	run();
 	}
 
@@ -32,7 +30,7 @@ public class Application {
 	}
 
 	public static void run() throws SQLException {
-		//deleteAllData();
+		deleteAllData();
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa','09-234','Mazowiecka','26','8')");
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa2','09-234','Mazowiecka','26','8')");
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa3','09-234','Mazowiecka','26','8')");

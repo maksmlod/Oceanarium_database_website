@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj adres</title>
+</head>
+<body>
+<div align="center">
+    <h1>Wprowadz nowy adres</h1>
+    <br/>
+    <form action="#" th:action="@{/update}" th:object="${adres}" method="post">
+        <table border = "1" cellpadding="10">
+            <tr>
+                <td>Numer adresu:</td>
+                <td><input type="text" th:field="*{nr_adresu}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>Miejscowosc:</td>
+                <td><input type="text" th:field="*{miejscowosc}"></td>
+            </tr>
+            <tr>
+                <td>Kod pocztowy:</td>
+                <td><input type="text" th:field="*{kod_pocztowy}"></td>
+            </tr>
+            <tr>
+                <td>Ulica:</td>
+                <td><input type="text" th:field="*{ulica}"></td>
+            </tr>
+            <tr>
+                <td>Numer budynku:</td>
+                <td><input type="text" th:field="*{nr_budynku}"></td>
+            </tr>
+            <tr>
+                <td>Numer lokalu:</td>
+                <td><input type="text" th:field="*{nr_lokalu}"></td>
+            </tr>
+            <!-- Button save -->
+            <tr>
+                <td colspan="2"><button type="submit">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
