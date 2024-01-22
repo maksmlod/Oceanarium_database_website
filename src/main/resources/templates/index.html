@@ -1,53 +1,66 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-  <meta charset="UTF-8">
-  <title>Welcome Page</title>
-</head>
-<body>
-<h1>Welcome!</h1>
-<p>Click <a th:href="@{/main}">here</a> to see a Main Page.</p>
-<p>Click <a th:href="@{/index_wlasciciel}">here</a> to see Wlasciciele</p>
-<p>Click <a th:href="@{/index_oceanarium}">here</a> to see Oceanaria</p>
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
+  <head>
+    <title>Subnautica - home</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../static/img/fish.png">
+  </head>
 
-<div align="center">
-  <h1> Adresy </h1>
-  <a href="/new">Enter new adress</a>
-  <br/><br/>
-  <!-- Table -->
-  <table border = "1" cellpadding = "10"> <!-– border –
-    obramowanie, cellpadding – rozmiar komórki -->
-    <!-- Table header -->
-    <thead>
-    <tr> <!-- Table row -->
-      <th>Nr adresu</th> <!–- Table column -->
-      <th>Miejscowosc</th>
-      <th>Kod pocztowy</th>
-      <th>Ulica</th>
-      <th>Nr budynku</th>
-      <th>Nr lokalu</th>
-      <th>Operacja</th>
-    </tr>
-    </thead>
-    <!-- Table body -->
-    <tbody>
-    <tr th:each = "adres : ${listAdres}">
-      <td th:text = "${adres.nr_adresu}">Numer adresu</td>
-      <td th:text = "${adres.miejscowosc}">Miejscowosc</td>
-      <td th:text = "${adres.kod_pocztowy}">Kod pocztowy</td>
-      <td th:text = "${adres.ulica}">Ulica</td>
-      <td th:text = "${adres.nr_budynku}">Nr budynku</td>
-      <td th:text = "${adres.nr_lokalu}">Nr lokalu</td>
-      <td>
-        <a th:href="@{'/edit/' + ${adres.nr_adresu}}">Edit</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a th:href="@{'/delete/' + ${adres.nr_adresu}}">Delete</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-</body>
+  <body>
+    <nav class="navbar navbar-expand-md">
+      <div>
+        <a class="navbar-header" href="/index">
+          <img src="../static/img/fish.png" width="50px" alt="logo">
+        </a>
+      </div>
+      <a class="navbar-brand" href="/index">Subnautica</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="" role="button"><i class="fa-solid fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/index">Home <i class="fa-solid fa-house"></i></a>
+          </li>
+          <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+        </ul>
+        <div class="d-flex align-items-center">
+          <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
+          <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+            Log in <i class="fa-solid fa-right-to-bracket"></i>
+          </button>
+          <button type="button" class="btn btn-primary px-3 mr-2" style="color: antiquewhite">
+            Register <i class="fa-solid fa-user-plus"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div id="center_box">
+      <a th:href="@{/main}">
+        <button id="big_button">Let's get started!</button>
+      </a>
+    </div>
+
+    <ul class="circles" style="z-index: -10">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+  </body>
 </html>

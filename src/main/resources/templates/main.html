@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-  <head>
-    <title>Main Page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../static/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" href="../static/img/fish.png">
-  </head>
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
+    <head>
+        <title>Main Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="../static/css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
+        <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" href="../static/img/fish.png">
+    </head>
 
-  <body>
-    <nav class="navbar navbar-expand-md">
-      <div>
-        <a class="navbar-header" href="/index">
-          <img src="../static/img/fish.png" width="50px">
-        </a>
-      </div>
-      <a class="navbar-brand" href="/index">Placeholder name</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
+    <body>
+        <nav class="navbar navbar-expand-md">
+            <div>
+                <a class="navbar-header" href="/index">
+                    <img src="../static/img/fish.png" width="50px" alt="logo">
+                </a>
+            </div>
+            <a class="navbar-brand" href="/index">Subnautica</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="" role="button"><i class="fa-solid fa-bars"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/index">Home <i class="fa-solid fa-house"></i></a>
+                    </li>
+                    <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+                </ul>
+                <div class="d-flex align-items-center">
+                    <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
+                    <form th:action="@{/logout}" method="post">
+                        <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+                            Log out <i class="fa-solid fa-right-from-bracket"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        <div id="box_form">
+            <h1 th:inline="text">Hello, <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+        </div>
+
+        <ul class="circles" style="z-index: -10">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
         </ul>
-        <form class="form-inline mt-2 mt-md-0" th:action="@{/logout}" method="post">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Sign out</button>
-        </form>
-      </div>
-    </nav>
 
-    <div id="box1">
-      <h1>Placeholder name</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores facilis, quasi? Accusamus, consequuntur dignissimos fuga libero magnam necessitatibus? Aspernatur delectus enim eveniet excepturi facilis minima nostrum, ratione rerum. Quos, rerum!</p>
-    </div>
-
-    <ul class="circles" style="z-index: -10">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-
-  </body>
+    </body>
 </html>
