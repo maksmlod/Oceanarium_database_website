@@ -20,7 +20,7 @@ public class Application {
 
 	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(Application.class, args);
-		run();
+		//run();
 
 	}
 
@@ -45,14 +45,14 @@ public class Application {
 	}
 
 	public static void deleteAllData() throws SQLException {
+		runSqlStatement("DELETE FROM Bilety");
+		runSqlStatement("DELETE FROM Pracownicy");
+		runSqlStatement("DELETE FROM Klienci");
 		runSqlStatement("DELETE FROM Oceanaria");
 		runSqlStatement("DELETE FROM Wlasciciele");
 		runSqlStatement("DELETE FROM Adresy");
 		runSqlStatement("DELETE FROM Zbiorniki");
-		runSqlStatement("DELETE FROM Klienci");
 		runSqlStatement("DELETE FROM Organizmy");
-		runSqlStatement("DELETE FROM Pracownicy");
-		runSqlStatement("DELETE FROM Bilety");
 	}
 
 
