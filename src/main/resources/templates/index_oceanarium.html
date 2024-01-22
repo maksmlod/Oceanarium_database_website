@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+<p>Click <a th:href="@{/}">here</a> to see a start page</p>
+<div align="center">
+    <h1> Oceanaria </h1>
+    <a href="/new_oceanarium">Enter new oceanarium</a>
+    <br/><br/>
+    <!-- Table -->
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>Nr oceanarium</th> <!–- Table column -->
+            <th>Nazwa</th>
+            <th>Data zalozenia</th>
+            <th>Godziny otwarcia</th>
+            <th>Nr adresu</th>
+            <th>Nr wlasciciela</th>
+            <th>Operacja</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "oceanarium : ${listOceanarium}">
+            <td th:text = "${oceanarium.nr_oceanarium}">Numer oceanarium</td>
+            <td th:text = "${oceanarium.nazwa}">Nazwa</td>
+            <td th:text = "${oceanarium.data_zalozenia}">Data założenia</td>
+            <td th:text = "${oceanarium.godziny_otwarcia}">Godziny otwarcia</td>
+            <td th:text = "${oceanarium.nr_adresu}">Numer adresu</td>
+            <td th:text = "${oceanarium.nr_wlasciciela}">Numer wlasciciela</td>
+            <td>
+                <a th:href="@{'/edit_oceanarium/' + ${oceanarium.nr_oceanarium}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete_oceanarium/' + ${oceanarium.nr_oceanarium}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
