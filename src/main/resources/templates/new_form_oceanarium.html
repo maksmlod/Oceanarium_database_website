@@ -13,10 +13,6 @@
     <form action="#" th:action="@{/save_oceanarium}" th:object="${oceanarium}" method="post">
         <table border = "1" cellpadding="10">
             <tr>
-                <td>Numer oceanarium:</td>
-                <td><input type="text" th:field="*{nr_oceanarium}" readonly="readonly"></td>
-            </tr>
-            <tr>
                 <td>Nazwa:</td>
                 <td><input type="text" th:field="*{nazwa}"></td>
             </tr>

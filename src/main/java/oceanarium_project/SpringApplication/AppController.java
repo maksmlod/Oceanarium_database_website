@@ -27,6 +27,10 @@ public class AppController implements WebMvcConfigurer {
     private WlascicielDAO wlascicielDAO;
     @Autowired
     private OceanariumDAO oceanariumDAO;
+    @Autowired
+    private PracownikDAO pracownikDAO;
+    @Autowired
+    private KlientDAO klientDAO;
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
@@ -50,6 +54,22 @@ public class AppController implements WebMvcConfigurer {
         model.addAttribute("listOceanarium",listOceanarium);
 
         return "index_oceanarium";
+    }
+
+    @RequestMapping("/index_pracownik")
+    public String viewHomePagePracownik(Model model) {
+        List<Pracownik> listPracownik = pracownikDAO.list();
+        model.addAttribute("listPracownik",listPracownik);
+
+        return "index_pracownik";
+    }
+
+    @RequestMapping("/index_klient")
+    public String viewHomePageKlient(Model model) {
+        List<Klient> listKlient = klientDAO.list();
+        model.addAttribute("listKlient",listKlient);
+
+        return "index_klient";
     }
 
 
@@ -173,6 +193,92 @@ public class AppController implements WebMvcConfigurer {
         oceanariumDAO.delete(nr_oceanarium);
 
         return "redirect:/index_oceanarium";
+    }
+
+
+
+
+
+
+
+
+    ///////////Pracownik
+    @RequestMapping("/new_pracownik")
+    public String showNewForm_pracownik(Model model) {
+        Pracownik pracownik = new Pracownik();
+        model.addAttribute("pracownik", pracownik);
+        return "new_form_pracownik";
+    }
+
+    @RequestMapping(value = "/save_pracownik", method = RequestMethod.POST)
+    public String save_pracownik(@ModelAttribute("pracownik") Pracownik pracownik) {
+        pracownikDAO.save(pracownik);
+
+        return "redirect:/index_pracownik";
+    }
+
+    @RequestMapping("/edit_pracownik/{nr_pracownika}")
+    public ModelAndView showEditForm_pracownik(@PathVariable(name = "nr_pracownika") int nr_pracownika) {
+        ModelAndView mav = new ModelAndView("edit_form_pracownik");
+        Pracownik pracownik = pracownikDAO.get(nr_pracownika);
+        mav.addObject("pracownik", pracownik);
+        return mav;
+    }
+
+    @RequestMapping(value = "/update_pracownik", method = RequestMethod.POST)
+    public String update_pracownik(@ModelAttribute("pracownik") Pracownik pracownik) {
+        pracownikDAO.update(pracownik);
+
+        return "redirect:/index_pracownik";
+    }
+
+    @RequestMapping("/delete_pracownik/{nr_pracownika}")
+    public String delete_pracownik(@PathVariable(name = "nr_pracownika") int nr_pracownika) {
+        pracownikDAO.delete(nr_pracownika);
+
+        return "redirect:/index_pracownik";
+    }
+
+
+
+
+
+
+    ////////KLIENT
+    @RequestMapping("/new_klient")
+    public String showNewForm_klient(Model model) {
+        Klient klient = new Klient();
+        model.addAttribute("klient", klient);
+        return "new_form_klient";
+    }
+
+    @RequestMapping(value = "/save_klient", method = RequestMethod.POST)
+    public String save_klient(@ModelAttribute("klient") Klient klient) {
+        klientDAO.save(klient);
+
+        return "redirect:/index_klient";
+    }
+
+    @RequestMapping("/edit_klient/{nr_klienta}")
+    public ModelAndView showEditForm_klient(@PathVariable(name = "nr_klienta") int nr_klienta) {
+        ModelAndView mav = new ModelAndView("edit_form_klient");
+        Klient klient = klientDAO.get(nr_klienta);
+        mav.addObject("klient", klient);
+        return mav;
+    }
+
+    @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
+    public String update_klient(@ModelAttribute("klient") Klient klient) {
+        klientDAO.update(klient);
+
+        return "redirect:/index_klient";
+    }
+
+    @RequestMapping("/delete_klient/{nr_klienta}")
+    public String delete_klient(@PathVariable(name = "nr_klienta") int nr_klienta) {
+        klientDAO.delete(nr_klienta);
+
+        return "redirect:/index_klient";
     }
 
 }
