@@ -16,9 +16,12 @@ import java.util.List;
 public class Application {
 	@Autowired private static JdbcTemplate jdbcTemplate;
 
+
+
 	public static void main(String[] args) throws SQLException {
 		SpringApplication.run(Application.class, args);
-	//	run();
+		run();
+
 	}
 
 	public static void runSqlStatement(String sql) throws SQLException {
@@ -31,20 +34,25 @@ public class Application {
 
 	public static void run() throws SQLException {
 		deleteAllData();
+
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa','09-234','Mazowiecka','26','8')");
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa2','09-234','Mazowiecka','26','8')");
 		runSqlStatement("INSERT INTO Adresy (Miejscowosc, Kod_pocztowy, Ulica, Nr_budynku, Nr_lokalu) VALUES ('Warszawa3','09-234','Mazowiecka','26','8')");
+
+		runSqlStatement("INSERT INTO Wlasciciele (Imie, Nazwisko, PESEL) VALUES ('Henryk','Kowalski','03261406719')");
+		runSqlStatement("INSERT INTO Wlasciciele (Imie, Nazwisko, PESEL) VALUES ('Antoni','Dabrowski','96261128231')");
+
 	}
 
 	public static void deleteAllData() throws SQLException {
-		runSqlStatement("DELETE FROM wlasciciele");
-		runSqlStatement("DELETE FROM adresy");
-		runSqlStatement("DELETE FROM oceanaria");
-		runSqlStatement("DELETE FROM zbiorniki");
-		runSqlStatement("DELETE FROM klienci");
-		runSqlStatement("DELETE FROM organizmy");
-		runSqlStatement("DELETE FROM pracownicy");
-		runSqlStatement("DELETE FROM bilety");
+		runSqlStatement("DELETE FROM Oceanaria");
+		runSqlStatement("DELETE FROM Wlasciciele");
+		runSqlStatement("DELETE FROM Adresy");
+		runSqlStatement("DELETE FROM Zbiorniki");
+		runSqlStatement("DELETE FROM Klienci");
+		runSqlStatement("DELETE FROM Organizmy");
+		runSqlStatement("DELETE FROM Pracownicy");
+		runSqlStatement("DELETE FROM Bilety");
 	}
 
 

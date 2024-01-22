@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+</head>
+<body>
+<p>Click <a th:href="@{/}">here</a> to see a start page</p>
+<div align="center">
+    <h1> Wlasciciele </h1>
+    <a href="/new_wlasciciel">Enter new wlasciciel</a>
+    <br/><br/>
+    <!-- Table -->
+    <table border = "1" cellpadding = "10"> <!-– border –
+        obramowanie, cellpadding – rozmiar komórki -->
+        <!-- Table header -->
+        <thead>
+        <tr> <!-- Table row -->
+            <th>Nr wlasciciela</th> <!–- Table column -->
+            <th>Imie</th>
+            <th>Nazwisko</th>
+            <th>Pesel</th>
+            <th>Operacja</th>
+        </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+        <tr th:each = "wlasciciel : ${listWlasciciel}">
+            <td th:text = "${wlasciciel.nr_wlasciciela}">Numer wlasciciela</td>
+            <td th:text = "${wlasciciel.imie}">Imie</td>
+            <td th:text = "${wlasciciel.nazwisko}">Nazwisko</td>
+            <td th:text = "${wlasciciel.pesel}">PESEL</td>
+            <td>
+                <a th:href="@{'/edit_wlasciciel/' + ${wlasciciel.nr_wlasciciela}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete_wlasciciel/' + ${wlasciciel.nr_wlasciciela}}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
