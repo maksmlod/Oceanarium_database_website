@@ -1,32 +1,61 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
+    <title>Subnautica - owners</title>
     <meta charset="UTF-8">
-    <title>Welcome Page</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="img/fish.png">
 </head>
+
 <body>
-<p>Click <a th:href="@{/}">here</a> to see a start page</p>
-<div align="center">
-    <h1> Wlasciciele </h1>
-    <a href="/new_wlasciciel">Enter new wlasciciel</a>
+<nav class="navbar navbar-expand-md">
+    <div>
+        <a class="navbar-header" href="/index">
+            <img src="img/fish.png" width="50px" alt="logo">
+        </a>
+    </div>
+    <a class="navbar-brand" href="/index">Subnautica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="" role="button"><i class="fa-solid fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index">Home <i class="fa-solid fa-house"></i></a>
+            </li>
+            <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+        </ul>
+        <div class="d-flex align-items-center">
+            <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
+            <form th:action="@{/logout}" method="post">
+                <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+                    Log out <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="box_table">
+    <h1> Owners </h1>
+    <a href="/new_wlasciciel">Enter new owner information</a>
     <br/><br/>
     <!-- Table -->
-    <table border = "1" cellpadding = "10"> <!-– border –
-        obramowanie, cellpadding – rozmiar komórki -->
+    <table cellpadding = "10">
         <!-- Table header -->
-        <thead>
         <tr> <!-- Table row -->
-            <th>Nr wlasciciela</th> <!–- Table column -->
-            <th>Imie</th>
-            <th>Nazwisko</th>
-            <th>Pesel</th>
-            <th>Operacja</th>
+            <th>Owner nr</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>PESEL</th>
+            <th>Actions</th>
         </tr>
-        </thead>
         <!-- Table body -->
-        <tbody>
         <tr th:each = "wlasciciel : ${listWlasciciel}">
             <td th:text = "${wlasciciel.nr_wlasciciela}">Numer wlasciciela</td>
             <td th:text = "${wlasciciel.imie}">Imie</td>
@@ -38,8 +67,20 @@
                 <a th:href="@{'/delete_wlasciciel/' + ${wlasciciel.nr_wlasciciela}}">Delete</a>
             </td>
         </tr>
-        </tbody>
     </table>
 </div>
+
+<ul class="circles" style="z-index: -10">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
 </body>
 </html>

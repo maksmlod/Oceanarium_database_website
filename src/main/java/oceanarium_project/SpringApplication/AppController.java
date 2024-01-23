@@ -32,12 +32,12 @@ public class AppController implements WebMvcConfigurer {
     @Autowired
     private KlientDAO klientDAO;
 
-    @RequestMapping("/")
+    @RequestMapping("/index_adres")
     public String viewHomePage(Model model) {
         List<Adres> listAdres = adresDAO.list();
         model.addAttribute("listAdres",listAdres);
 
-        return "index";
+        return "index_adres";
     }
 
     @RequestMapping("/index_wlasciciel")

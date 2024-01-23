@@ -1,55 +1,96 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-    <meta charset="UTF-8">
-    <title>Welcome Page</title>
-</head>
-<body>
-<p>Click <a th:href="@{/}">here</a> to see a start page</p>
-<div align="center">
-    <h1> Klienci </h1>
-    <a href="/new_klient">Enter new klient</a>
-    <br/><br/>
-    <!-- Table -->
-    <table border = "1" cellpadding = "10"> <!-– border –
-        obramowanie, cellpadding – rozmiar komórki -->
-        <!-- Table header -->
-        <thead>
-        <tr> <!-- Table row -->
-            <th>Nr klienta</th> <!–- Table column -->
-            <th>Imie</th>
-            <th>Nazwisko</th>
-            <th>Plec</th>
-            <th>Nr_telefonu</th>
-            <th>Email</th>
-            <th>Rodzaj dokumentu</th>
-            <th>Numer dokumentu</th>
-            <th>Nr oceanarium</th>
-            <th>Operacje</th>
-        </tr>
-        </thead>
-        <!-- Table body -->
-        <tbody>
-        <tr th:each = "klient : ${listKlient}">
-            <td th:text = "${klient.nr_klienta}">Numer klienta</td>
-            <td th:text = "${klient.imie}">Imie</td>
-            <td th:text = "${klient.nazwisko}">Nazwisko</td>
-            <td th:text = "${klient.plec}">Plec</td>
-            <td th:text = "${klient.nr_telefonu}">nr telefonu</td>
-            <td th:text = "${klient.email}">email</td>
-            <td th:text = "${klient.rodzaj_dokumentu}">rodzaj dokumentu</td>
-            <td th:text = "${klient.numer_dokumentu}">numer dokumentu</td>
-            <td th:text = "${klient.nr_oceanarium}">nr oceanarium</td>
-            <td>
-                <a th:href="@{'/edit_klient/' + ${klient.nr_klienta}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete_klient/' + ${klient.nr_klienta}}">Delete</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-</div>
-</body>
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
+    <head>
+        <title>Subnautica - clients</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="icon" href="img/fish.png">
+    </head>
+
+    <body>
+    <nav class="navbar navbar-expand-md">
+        <div>
+            <a class="navbar-header" href="/index">
+                <img src="img/fish.png" width="50px" alt="logo">
+            </a>
+        </div>
+        <a class="navbar-brand" href="/index">Subnautica</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="" role="button"><i class="fa-solid fa-bars"></i></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index">Home <i class="fa-solid fa-house"></i></a>
+                </li>
+                <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+            </ul>
+            <div class="d-flex align-items-center">
+                <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
+                <form th:action="@{/logout}" method="post">
+                    <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+                        Log out <i class="fa-solid fa-right-from-bracket"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div id="box_table">
+        <h1> Clients </h1>
+        <a href="/new_klient">Enter new client information</a>
+        <br/><br/>
+        <!-- Table -->
+        <table cellpadding = "10">
+            <!-- Table header -->
+            <tr> <!-- Table row -->
+                <th>Client nr</th> <!–- Table column -->
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Gender</th>
+                <th>Phone nr</th>
+                <th>E-mail address</th>
+                <th>Type of document</th>
+                <th>Document nr</th>
+                <th>Aquarium nr</th>
+                <th>Actions</th>
+            </tr>
+            <!-- Table body -->
+            <tr th:each = "klient : ${listKlient}">
+                <td th:text = "${klient.nr_klienta}">Numer klienta</td>
+                <td th:text = "${klient.imie}">Imie</td>
+                <td th:text = "${klient.nazwisko}">Nazwisko</td>
+                <td th:text = "${klient.plec}">Plec</td>
+                <td th:text = "${klient.nr_telefonu}">nr telefonu</td>
+                <td th:text = "${klient.email}">email</td>
+                <td th:text = "${klient.rodzaj_dokumentu}">rodzaj dokumentu</td>
+                <td th:text = "${klient.numer_dokumentu}">numer dokumentu</td>
+                <td th:text = "${klient.nr_oceanarium}">nr oceanarium</td>
+                <td>
+                    <a th:href="@{'/edit_klient/' + ${klient.nr_klienta}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete_klient/' + ${klient.nr_klienta}}">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <ul class="circles" style="z-index: -10">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    </body>
 </html>
