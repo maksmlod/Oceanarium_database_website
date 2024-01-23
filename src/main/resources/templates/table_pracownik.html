@@ -3,7 +3,7 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
-    <title>Subnautica - edit address</title>
+    <title>Subnautica - employees</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/style.css">
@@ -42,82 +42,51 @@
     </div>
 </nav>
 <div id="box_table">
-    <h1>Edit address</h1>
+    <h1> Employees </h1>
+    <a href="/new_pracownik">Enter new employee information</a>
+    <br/><br/>
+    <!-- Table -->
+    <table cellpadding = "10">
+        <!-- Table header -->
+        <tr> <!-- Table row -->
+            <th>Employee nr</th> <!–- Table column -->
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Gender</th>
+            <th>PESEL</th>
+            <th>Phone nr</th>
+            <th>E-mail address</th>
+            <th>Birthdate</th>
+            <th>Education</th>
+            <th>Employment date</th>
+            <th>Bank account nr</th>
+            <th>Aquarium nr</th>
+            <th>Addr. nr</th>
+            <th>Actions</th>
+        </tr>
+        <!-- Table body -->
+        <tr th:each = "pracownik : ${listPracownik}">
+            <td th:text = "${pracownik.nr_pracownika}">Nr pracownika</td>
+            <td th:text = "${pracownik.imie}">Imie</td>
+            <td th:text = "${pracownik.nazwisko}">Nazwisko</td>
+            <td th:text = "${pracownik.plec}">Plec</td>
+            <td th:text = "${pracownik.pesel}">PESEL</td>
+            <td th:text = "${pracownik.nr_telefonu}">Nr telefonu</td>
+            <td th:text = "${pracownik.email}">Email</td>
+            <td th:text = "${pracownik.data_urodzenia}">Nr telefonu</td>
+            <td th:text = "${pracownik.wyksztalcenie}">Wyksztalcenie</td>
+            <td th:text = "${pracownik.data_zatrudnienia}">Data zatrudnienia</td>
+            <td th:text = "${pracownik.nr_konta}">Nr konta</td>
+            <td th:text = "${pracownik.nr_oceanarium}">Nr oceanarium</td>
+            <td th:text = "${pracownik.nr_adresu}">Nr adresu</td>
 
-    <form action="#" th:action="@{/updateZ}" th:object="${adres}" method="post">
-        <table cellpadding="10px">
-            <th>
-                Name
-            </th>
-            <th>
-                Input
-            </th>
-
-            <tr>
-                <td>
-                    Address number:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{nr_adresu}" readonly="readonly">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    City name:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{miejscowosc}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Postal code:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{kod_pocztowy}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Street name:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{ulica}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Building number:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{nr_budynku}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Appt. number:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{nr_lokalu}">
-                    </label>
-                </td>
-            </tr>
-        </table>
-        <div>
-            <input type="submit" value="Save"/>
-        </div>
-    </form>
+            <td>
+                <a th:href="@{'/edit_pracownik/' + ${pracownik.nr_pracownika}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete_pracownik/' + ${pracownik.nr_pracownika}}">Delete</a>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <ul class="circles" style="z-index: -10">

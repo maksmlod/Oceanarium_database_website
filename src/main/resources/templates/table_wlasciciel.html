@@ -3,13 +3,13 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
-    <title>Subnautica - new aquarium</title>
+    <title>Subnautica - owners</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="img/fish.png">
 </head>
 
@@ -42,71 +42,32 @@
     </div>
 </nav>
 <div id="box_table">
-    <h1>Enter new aquarium information</h1>
-
-    <form action="#" th:action="@{/save}" th:object="${oceanarium}" method="post">
-        <table cellpadding="10px">
-            <th>
-                Name
-            </th>
-            <th>
-                Input
-            </th>
-            <tr>
-                <td>
-                    Aquarium name:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{nazwa}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Establishment date:
-                </td>
-                <td>
-                    <label>
-                        <input type="date" th:field="*{data_zalozenia}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Working hours:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{godziny_otwarcia}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Address number:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{nr_adresu}">
-                    </label>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Owner number:
-                </td>
-                <td>
-                    <label>
-                        <input type="text" th:field="*{nr_wlasciciela}">
-                    </label>
-                </td>
-            </tr>
-        </table>
-        <div>
-            <input type="submit" value="Save"/>
-        </div>
-    </form>
+    <h1> Owners </h1>
+    <a href="/new_wlasciciel">Enter new owner information</a>
+    <br/><br/>
+    <!-- Table -->
+    <table cellpadding = "10">
+        <!-- Table header -->
+        <tr> <!-- Table row -->
+            <th>Owner nr</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>PESEL</th>
+            <th>Actions</th>
+        </tr>
+        <!-- Table body -->
+        <tr th:each = "wlasciciel : ${listWlasciciel}">
+            <td th:text = "${wlasciciel.nr_wlasciciela}">Numer wlasciciela</td>
+            <td th:text = "${wlasciciel.imie}">Imie</td>
+            <td th:text = "${wlasciciel.nazwisko}">Nazwisko</td>
+            <td th:text = "${wlasciciel.pesel}">PESEL</td>
+            <td>
+                <a th:href="@{'/edit_wlasciciel/' + ${wlasciciel.nr_wlasciciela}}">Edit</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete_wlasciciel/' + ${wlasciciel.nr_wlasciciela}}">Delete</a>
+            </td>
+        </tr>
+    </table>
 </div>
 
 <ul class="circles" style="z-index: -10">

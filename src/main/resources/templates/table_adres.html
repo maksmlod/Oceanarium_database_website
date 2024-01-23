@@ -3,7 +3,7 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
   <head>
-    <title>Subnautica - home</title>
+    <title>Subnautica - addresses</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/style.css">
@@ -33,20 +33,44 @@
         </ul>
         <div class="d-flex align-items-center">
           <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
-          <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
-            Log in <i class="fa-solid fa-right-to-bracket"></i>
-          </button>
-          <button type="button" class="btn btn-primary px-3 mr-2" style="color: antiquewhite">
-            Register <i class="fa-solid fa-user-plus"></i>
-          </button>
+          <form th:action="@{/logout}" method="post">
+            <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+              Log out <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </form>
         </div>
       </div>
     </nav>
-
-    <div id="center_box">
-      <a th:href="@{/main}">
-        <button id="big_button">Let's get started!</button>
-      </a>
+    <div id="box_table">
+      <h1> Addresses </h1>
+      <a href="/new_adres">Enter new adress</a>
+      <br/><br/>
+      <table cellpadding = 10px>
+        <!-- Table header -->
+        <tr> <!-- Table row -->
+          <th>Addr. nr</th> <!–- Table column -->
+          <th>City</th>
+          <th>Postal code</th>
+          <th>Street name</th>
+          <th>Building nr</th>
+          <th>Appt. nr</th>
+          <th>Action</th>
+        </tr>
+        <!-- Table body -->
+        <tr th:each = "adres : ${listAdres}">
+          <td th:text = "${adres.nr_adresu}">Numer adresu</td>
+          <td th:text = "${adres.miejscowosc}">Miejscowosc</td>
+          <td th:text = "${adres.kod_pocztowy}">Kod pocztowy</td>
+          <td th:text = "${adres.ulica}">Ulica</td>
+          <td th:text = "${adres.nr_budynku}">Nr budynku</td>
+          <td th:text = "${adres.nr_lokalu}">Nr lokalu</td>
+          <td>
+            <a th:href="@{'/edit_adres/' + ${adres.nr_adresu}}">Edit</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a th:href="@{'/delete_adres/' + ${adres.nr_adresu}}">Delete</a>
+          </td>
+        </tr>
+      </table>
     </div>
 
     <ul class="circles" style="z-index: -10">
@@ -61,6 +85,5 @@
       <li></li>
       <li></li>
     </ul>
-
   </body>
 </html>
