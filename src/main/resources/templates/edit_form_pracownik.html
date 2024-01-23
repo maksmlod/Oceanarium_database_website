@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
+<head>
+    <title>Subnautica - edit employee</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <link rel="icon" th:href="@{img/fish.png}">
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md">
+    <div>
+        <a class="navbar-header" href="/index">
+            <img src="img/fish.png" width="50px" alt="logo">
+        </a>
+    </div>
+    <a class="navbar-brand" href="/index">Subnautica</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="" role="button"><i class="fa-solid fa-bars"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/index">Home <i class="fa-solid fa-house"></i></a>
+            </li>
+            <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+        </ul>
+        <div class="d-flex align-items-center">
+            <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
+            <form th:action="@{/logout}" method="post">
+                <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+                    Log out <i class="fa-solid fa-right-from-bracket"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<div id="box_table">
+    <h1>Edit employee information</h1>
+
+    <form action="#" th:action="@{/update_pracownik}" th:object="${pracownik}" method="post">
+        <table cellpadding="10px">
+            <th>
+                Name
+            </th>
+            <th>
+                Input
+            </th>
+            <tr>
+                <td>
+                    Employee number:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nr_pracownika}" readonly="readonly">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    First name:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{imie}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last name:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nazwisko}">
+                    </label>
+                </td>
+            <tr>
+                <td>
+                    Gender:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{plec}">
+                    </label>
+                </td>
+            </tr>
+            </tr><tr>
+            <td>
+                PESEL:
+            </td>
+            <td>
+                <label>
+                    <input type="text" th:field="*{pesel}">
+                </label>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                    Phone number:
+                </td>
+                <td>
+                    <label>
+                        <input type="tel" th:field="*{nr_telefonu}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    E-mail address:
+                </td>
+                <td>
+                    <label>
+                        <input type="email" th:field="*{email}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Birthdate:
+                </td>
+                <td>
+                    <label>
+                        <input type="date" th:field="*{data_urodzenia}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Education:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{wyksztalcenie}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Employment date:
+                </td>
+                <td>
+                    <label>
+                        <input type="date" th:field="*{data_zatrudnienia}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Bank account number:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nr_konta}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Aquarium number:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nr_oceanarium}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address number:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nr_adresu}">
+                    </label>
+                </td>
+            </tr>
+        </table>
+        <div>
+            <input type="submit" value="Save"/>
+        </div>
+    </form>
+</div>
+
+<ul class="circles" style="z-index: -10">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+</body>
+</html>
