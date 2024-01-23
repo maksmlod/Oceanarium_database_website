@@ -91,7 +91,7 @@ public class AppController implements WebMvcConfigurer {
     public String save(@ModelAttribute("adres") Adres adres) {
         adresDAO.save(adres);
 
-        return "redirect:/";
+        return "redirect:/index_adres";
     }
 
     @RequestMapping("/edit/{nr_adresu}")
@@ -106,14 +106,14 @@ public class AppController implements WebMvcConfigurer {
     public String update(@ModelAttribute("adres") Adres adres) {
         adresDAO.update(adres);
 
-        return "redirect:/";
+        return "redirect:/index_adres";
     }
 
     @RequestMapping("/delete/{nr_adresu}")
     public String delete(@PathVariable(name = "nr_adresu") int nr_adresu) {
         adresDAO.delete(nr_adresu);
 
-        return "redirect:/";
+        return "redirect:/index_adres";
     }
 
 

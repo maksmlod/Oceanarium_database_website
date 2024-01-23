@@ -43,7 +43,7 @@
     </nav>
     <div id="box_table">
       <h1> Addresses </h1>
-      <a href="/new_adres">Enter new adress</a>
+      <a href="/new">Enter new adress</a>
       <br/><br/>
       <table cellpadding = 10px>
         <!-- Table header -->
@@ -65,9 +65,9 @@
           <td th:text = "${adres.nr_budynku}">Nr budynku</td>
           <td th:text = "${adres.nr_lokalu}">Nr lokalu</td>
           <td>
-            <a th:href="@{'/edit_adres/' + ${adres.nr_adresu}}">Edit</a>
+            <a th:href="@{'/edit/' + ${adres.nr_adresu}}">Edit</a>
             &nbsp;&nbsp;&nbsp;&nbsp;
-            <a th:href="@{'/delete_adres/' + ${adres.nr_adresu}}">Delete</a>
+            <a th:href="@{'/delete/' + ${adres.nr_adresu}}">Delete</a>
           </td>
         </tr>
       </table>

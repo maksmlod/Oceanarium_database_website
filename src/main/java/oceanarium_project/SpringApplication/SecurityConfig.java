@@ -16,7 +16,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class SecurityConfig {
-/*
+
     @Bean
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -24,16 +24,20 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        String[] staticResources  =  {
+                "/css/**",
+                "/scripts/**",
+                "/resources/**"
+        };
         http
-                //.csrf(AbstractHttpConfigurer::disable)
+                .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(requests -> requests
                                 .requestMatchers("/","/index").permitAll()
-                                .requestMatchers("/main").permitAll()
-                                .requestMatchers("/main").authenticated()
-                                .requestMatchers("/","/index","/new_form","/new").anonymous()
-                                //.requestMatchers("/resources/static/**").permitAll()
-                                //.requestMatchers("/resources/static/**").permitAll()
-                                //.requestMatchers("/main").authenticated()
+                                .requestMatchers("/lib/bootstrap/**",
+                                "/css/**",
+                                "/img/**",
+                                "/js/**").permitAll()
+                                .anyRequest().authenticated()
                 )
 
 
@@ -72,8 +76,5 @@ public class SecurityConfig {
 
         return new InMemoryUserDetailsManager(user, admin);
     }
-
-
- */
 
 }
