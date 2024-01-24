@@ -1,14 +1,79 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
   <title>Main Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Changa&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/69f916e7c9.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="img/fish.png">
 </head>
+
 <body>
-<h1>Hello world!</h1>
-<form th:action="@{/logout}" method="post">
-  <input type="submit" value="Sign Out"/>
-</form>
+<nav class="navbar navbar-expand-md">
+  <div>
+    <a class="navbar-header" href="/main">
+      <img src="img/fish.png" width="50px" alt="logo">
+    </a>
+  </div>
+  <a class="navbar-brand" href="/main">Subnautica</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="" role="button"><i class="fa-solid fa-bars"></i></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarCollapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/main">Home <i class="fa-solid fa-house"></i></a>
+      </li>
+      <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+      <li>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Tables
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/index_adres">Addresses</a>
+            <a class="dropdown-item" href="/index_klient">Clients</a>
+            <a class="dropdown-item" href="index_oceanarium">Aquariums</a>
+            <a class="dropdown-item" href="/index_pracownik">Employees</a>
+            <a class="dropdown-item" href="/index_wlasciciel">Owners</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div class="d-flex align-items-center">
+      <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
+      <form th:action="@{/logout}" method="post">
+        <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
+          Log out <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div id="box_form">
+  <h1 th:inline="text">Hello, <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+</div>
+
+<ul class="circles" style="z-index: -10">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
 </body>
 </html>

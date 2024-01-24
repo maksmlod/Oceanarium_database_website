@@ -37,22 +37,27 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/img/**",
                                 "/js/**").permitAll()
+
+                        .requestMatchers("/main_user").hasRole("USER")
+                        .requestMatchers("/main_admin").hasRole("ADMIN")
+
                                 .anyRequest().authenticated()
+
+
+
                 )
 
 
                 .formLogin(
                         form -> form
                                 .loginPage("/login")
-                                .loginProcessingUrl("/login")
                                 .defaultSuccessUrl("/main")
                                 .permitAll()
                 )
                 .logout(
                         logout -> logout
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                //.logoutUrl("/logout")
-                                .logoutSuccessUrl("/login")
+                                .logoutSuccessUrl("/index")
                                 .permitAll()
                 );
 

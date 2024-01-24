@@ -3,7 +3,7 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
-    <title>Subnautica - employees</title>
+    <title>Main Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/style.css">
@@ -59,52 +59,9 @@
         </div>
     </div>
 </nav>
-<div id="box_table">
-    <h1> Employees </h1>
-    <a href="/new_pracownik">Enter new employee information</a>
-    <br/><br/>
-    <!-- Table -->
-    <table cellpadding = "10">
-        <!-- Table header -->
-        <tr> <!-- Table row -->
-            <th>Employee nr</th> <!–- Table column -->
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Gender</th>
-            <th>PESEL</th>
-            <th>Phone nr</th>
-            <th>E-mail address</th>
-            <th>Birthdate</th>
-            <th>Education</th>
-            <th>Employment date</th>
-            <th>Bank account nr</th>
-            <th>Aquarium nr</th>
-            <th>Addr. nr</th>
-            <th>Actions</th>
-        </tr>
-        <!-- Table body -->
-        <tr th:each = "pracownik : ${listPracownik}">
-            <td th:text = "${pracownik.nr_pracownika}">Nr pracownika</td>
-            <td th:text = "${pracownik.imie}">Imie</td>
-            <td th:text = "${pracownik.nazwisko}">Nazwisko</td>
-            <td th:text = "${pracownik.plec}">Plec</td>
-            <td th:text = "${pracownik.pesel}">PESEL</td>
-            <td th:text = "${pracownik.nr_telefonu}">Nr telefonu</td>
-            <td th:text = "${pracownik.email}">Email</td>
-            <td th:text = "${pracownik.data_urodzenia}">Nr telefonu</td>
-            <td th:text = "${pracownik.wyksztalcenie}">Wyksztalcenie</td>
-            <td th:text = "${pracownik.data_zatrudnienia}">Data zatrudnienia</td>
-            <td th:text = "${pracownik.nr_konta}">Nr konta</td>
-            <td th:text = "${pracownik.nr_oceanarium}">Nr oceanarium</td>
-            <td th:text = "${pracownik.nr_adresu}">Nr adresu</td>
 
-            <td>
-                <a th:href="@{'/edit_pracownik/' + ${pracownik.nr_pracownika}}">Edit</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a th:href="@{'/delete_pracownik/' + ${pracownik.nr_pracownika}}">Delete</a>
-            </td>
-        </tr>
-    </table>
+<div id="box_form">
+    <h1 th:inline="text">Hello, <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
 </div>
 
 <ul class="circles" style="z-index: -10">
@@ -119,5 +76,6 @@
     <li></li>
     <li></li>
 </ul>
+
 </body>
 </html>

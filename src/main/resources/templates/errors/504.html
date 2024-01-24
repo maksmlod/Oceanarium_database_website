@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
-    <title>Subnautica - login</title>
+    <title>Subnautica - home</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/style.css">
@@ -30,30 +31,39 @@
             </li>
             <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
         </ul>
-        <div class="d-flex align-items-center">
-            <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
-            <button type="button" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
-                Log in <i class="fa-solid fa-right-to-bracket"></i>
-            </button>
-            <button type="button" class="btn btn-primary px-3 mr-2" style="color: antiquewhite">
-                Register <i class="fa-solid fa-user-plus"></i>
-            </button>
-        </div>
     </div>
 </nav>
 
-<div id="box_form">
-<div th:if="${param.error}">
-    Invalid username and password.
+
+
+
+<!--
+<div id="center_box">
+
+  <p>Click <a th:href="@{/main}">here</a> to see a Main Page.</p>
+  <p>Click <a th:href="@{/index_adres}">here</a> to see Adresy</p>
+  <p>Click <a th:href="@{/index_wlasciciel}">here</a> to see Wlasciciele</p>
+  <p>Click <a th:href="@{/index_oceanarium}">here</a> to see Oceanaria</p>
+  <p>Click <a th:href="@{/index_pracownik}">here</a> to see Pracownicy</p>
+  <p>Click <a th:href="@{/index_klient}">here</a> to see Klienci</p>
+
+  <a th:href="@{/main}">
+    <button id="big_button">Let's get started! (login)</button>
+  </a>
 </div>
-<div th:if="${param.logout}">
-    You have been logged out.
-</div>
-<form th:action="@{/login}" method="post">
-    <div><label> Username : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
-    <div><input type="submit" value="Sign In"/></div>
-</form>
+-->
+
+<div id="center_box">
+    (tutaj ta osmiorniczka duza)
+    <br>
+    -
+    -
+    -
+    ERROR 504!!!
+    RETURN TO START SITE:
+    <br>
+    -
+    (tutaj jakis przycisk fajny do /main)
 </div>
 
 <ul class="circles" style="z-index: -10">
@@ -68,5 +78,6 @@
     <li></li>
     <li></li>
 </ul>
+
 </body>
 </html>

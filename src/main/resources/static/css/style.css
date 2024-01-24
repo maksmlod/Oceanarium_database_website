@@ -73,6 +73,19 @@ tr:hover {
     background-color: #195164 !important;
 }
 
+.dropdown-menu {
+    color: antiquewhite;
+    background-color: rgba(19, 54, 75, 0.75) !important;
+}
+
+.dropdown-item {
+    color: antiquewhite !important;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(19, 54, 75, 1.0) !important;
+}
+
 .fa-solid {
     color: antiquewhite;
 }
@@ -153,7 +166,7 @@ input[type=submit]:hover {
 
 #box_form {
     color: antiquewhite;
-    border: 5px inset #454546;
+    border: 5px inset rgba(69, 69, 70, 0.4);
     border-radius: 10px;
     background: rgba(19, 54, 75, 0.85);
 
@@ -174,7 +187,7 @@ input[type=submit]:hover {
 
 #box_table {
     color: antiquewhite;
-    border: 5px inset #454546;
+    border: 5px inset rgba(69, 69, 70, 0.4);
     border-radius: 10px;
     background: rgba(19, 54, 75, 0.85);
 
