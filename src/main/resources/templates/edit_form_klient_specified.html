@@ -3,7 +3,7 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3" lang="english">
 <head>
-    <title>Subnautica - edit address</title>
+    <title>Subnautica - edit client</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -20,7 +20,7 @@
 <nav class="navbar navbar-expand-md">
     <div>
         <a class="navbar-header" href="/main">
-            <img src="img/fish.png" width="50px" alt="logo">
+            <img th:src="@{/img/fish.png}" width="50px" alt="logo">
         </a>
     </div>
     <a class="navbar-brand" href="/main">Subnautica</a>
@@ -39,17 +39,13 @@
                         Tables <i class="fa-solid fa-table"></i>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="/index_adres">Addresses</a>
-                        <a class="dropdown-item" href="/index_klient">Clients</a>
-                        <a class="dropdown-item" href="index_oceanarium">Aquariums</a>
-                        <a class="dropdown-item" href="/index_pracownik">Employees</a>
-                        <a class="dropdown-item" href="/index_wlasciciel">Owners</a>
+                        <a class="dropdown-item" href="/index_klient_specified">Client (You)</a>
                     </div>
                 </div>
             </li>
         </ul>
-        <div class="d-flex align-items-center">
-            You are logged as admin
+        <div class="d-flex align-items-center" style="color:antiquewhite">
+            You are logged in as user
             <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
@@ -60,9 +56,9 @@
     </div>
 </nav>
 <div id="box_table">
-    <h1>Edit address</h1>
+    <h1>Edit client information</h1>
 
-    <form action="#" th:action="@{/update}" th:object="${adres}" method="post">
+    <form action="#" th:action="@{/update_klient}" th:object="${klient}" method="post">
         <table cellpadding="10px">
             <th>
                 Name
@@ -70,64 +66,92 @@
             <th>
                 Input
             </th>
-
             <tr>
                 <td>
-                    Address number:
+                    Client number:
                 </td>
                 <td>
                     <label>
-                        <input type="text" th:field="*{nr_adresu}" readonly="readonly">
+                        <input type="text" th:field="*{nr_klienta}" readonly="readonly">
+                    </label>
+                </td>
+            </tr><tr>
+            <td>
+                First name:
+            </td>
+            <td>
+                <label>
+                    <input type="text" th:field="*{imie}">
+                </label>
+            </td>
+        </tr>
+            <tr>
+                <td>
+                    Last name:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nazwisko}">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    City name:
+                    Gender
                 </td>
                 <td>
                     <label>
-                        <input type="text" th:field="*{miejscowosc}">
+                        <input type="text" th:field="*{plec}">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Postal code:
+                    Phone number:
                 </td>
                 <td>
                     <label>
-                        <input type="text" th:field="*{kod_pocztowy}">
+                        <input type="tel" th:field="*{nr_telefonu}">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Street name:
+                    E-mail address:
                 </td>
                 <td>
                     <label>
-                        <input type="text" th:field="*{ulica}">
+                        <input type="email" th:field="*{email}">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Building number:
+                    Type of document:
                 </td>
                 <td>
                     <label>
-                        <input type="text" th:field="*{nr_budynku}">
+                        <input type="text" th:field="*{rodzaj_dokumentu}">
                     </label>
                 </td>
             </tr>
             <tr>
                 <td>
-                    Appt. number:
+                    Document number:
                 </td>
                 <td>
                     <label>
-                        <input type="text" th:field="*{nr_lokalu}">
+                        <input type="text" th:field="*{numer_dokumentu}">
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Aquarium number:
+                </td>
+                <td>
+                    <label>
+                        <input type="text" th:field="*{nr_oceanarium}">
                     </label>
                 </td>
             </tr>

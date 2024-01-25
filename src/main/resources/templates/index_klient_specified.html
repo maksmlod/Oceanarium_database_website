@@ -44,8 +44,8 @@
         </div>
       </li>
     </ul>
-    <div class="d-flex align-items-center">
-      You are logged as user
+    <div class="d-flex align-items-center" style="color: antiquewhite">
+      You are logged in as user.
       <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
       <form th:action="@{/logout}" method="post">
         <button type="submit" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
@@ -85,7 +85,7 @@
       <td th:text = "${klient.numer_dokumentu}">numer dokumentu</td>
       <td th:text = "${klient.nr_oceanarium}">nr oceanarium</td>
       <td>
-        <a th:href="@{'/edit_klient/' + ${klient.nr_klienta}}">Edit</a>
+        <a th:href="@{'/edit_klient_specified/' + ${klient.nr_klienta}}">Edit</a>
       </td>
     </tr>
   </table>

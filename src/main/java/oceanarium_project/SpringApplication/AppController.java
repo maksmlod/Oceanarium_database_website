@@ -307,12 +307,23 @@ public class AppController implements WebMvcConfigurer {
         mav.addObject("klient", klient);
         return mav;
     }
+    @RequestMapping("/edit_klient_specified/{nr_klienta}")
+    public ModelAndView showEditForm_klientS(@PathVariable(name = "nr_klienta") int nr_klienta) {
+        ModelAndView mav = new ModelAndView("edit_form_klient_specified");
+        Klient klient = klientDAO.get(nr_klienta);
+        mav.addObject("klient", klient);
+        return mav;
+    }
+
 
     @RequestMapping(value = "/update_klient", method = RequestMethod.POST)
-    public String update_klient(@ModelAttribute("klient") Klient klient) {
+    public String update_klient(@ModelAttribute("klient") Klient klient, HttpServletRequest request) {
         klientDAO.update(klient);
+        if(request.isUserInRole("ADMIN")) {
+            return "redirect:/index_klient";
+        }
+        else return "redirect:/index_klient_specified";
 
-        return "redirect:/index_klient";
     }
 
 

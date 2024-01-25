@@ -20,7 +20,7 @@
 <nav class="navbar navbar-expand-md">
     <div>
         <a class="navbar-header" href="/main">
-            <img src="img/fish.png" width="50px" alt="logo">
+            <img th:src="@{/img/fish.png}" width="50px" alt="logo">
         </a>
     </div>
     <a class="navbar-brand" href="/main">Subnautica</a>
@@ -41,15 +41,15 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="/index_adres">Addresses</a>
                         <a class="dropdown-item" href="/index_klient">Clients</a>
-                        <a class="dropdown-item" href="index_oceanarium">Aquariums</a>
+                        <a class="dropdown-item" href="/index_oceanarium">Aquariums</a>
                         <a class="dropdown-item" href="/index_pracownik">Employees</a>
                         <a class="dropdown-item" href="/index_wlasciciel">Owners</a>
                     </div>
                 </div>
             </li>
         </ul>
-        <div class="d-flex align-items-center">
-            You are logged as admin
+        <div class="d-flex align-items-center" style="color: antiquewhite">
+            You are logged in as admin.
             <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="btn btn-link px-3 mr-2" style="color: antiquewhite">

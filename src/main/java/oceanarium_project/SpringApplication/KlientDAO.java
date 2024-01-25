@@ -35,7 +35,7 @@ public class KlientDAO {
     }
 
     public List<Klient> list2(){
-        String sql = "SELECT * FROM KLIENCI WHERE imie = 'user' AND nazwisko = 'user'";
+        String sql = "SELECT * FROM KLIENCI WHERE imie = 'user'";
 
         List<Klient> listKlient = jdbcTemplate.query(sql,
                 BeanPropertyRowMapper.newInstance(Klient.class));
