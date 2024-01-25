@@ -50,8 +50,18 @@
     You have been logged out.
 </div>
 <form th:action="@{/login}" method="post">
-    <div><label> Username : <input type="text" name="username"/> </label></div>
-    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <table style="border: none">
+        <tr style="background: none; color: antiquewhite">
+            <td style="text-align: right">
+                <label> Username : <input type="text" name="username"/> </label>
+            </td>
+        </tr>
+        <tr style="background: none; color: antiquewhite">
+            <td style="text-align: right">
+                <label> Password: <input type="password" name="password"/> </label>
+            </td>
+        </tr>
+    </table>
     <div><input type="submit" value="Sign In"/></div>
 </form>
 </div>

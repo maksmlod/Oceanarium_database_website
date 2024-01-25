@@ -34,6 +34,15 @@ public class KlientDAO {
 
     }
 
+    public List<Klient> list2(){
+        String sql = "SELECT * FROM KLIENCI WHERE imie = 'user' AND nazwisko = 'user'";
+
+        List<Klient> listKlient = jdbcTemplate.query(sql,
+                BeanPropertyRowMapper.newInstance(Klient.class));
+        return listKlient;
+
+    }
+
     public void save(Klient klient) {
         SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
         insertActor.withTableName("klienci").usingColumns("imie","nazwisko","plec","nr_telefonu","email",

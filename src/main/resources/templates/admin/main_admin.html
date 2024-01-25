@@ -48,8 +48,8 @@
                 </div>
             </li>
         </ul>
-        <div class="d-flex align-items-center">
-            You are logged as admin
+        <div class="d-flex align-items-center" style="color: antiquewhite">
+            You are logged in as admin.
             <!--   PRZYCISKI DO LOGOWANIA, REJESTRACJI, WHATNOT    -->
             <form th:action="@{/logout}" method="post">
                 <button type="submit" class="btn btn-link px-3 mr-2" style="color: antiquewhite">
@@ -60,8 +60,10 @@
     </div>
 </nav>
 
-<div id="box_form">
-    <h1 th:inline="text">Hello, <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+<div id="box_form" style="text-align: justify">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid, assumenda culpa eaque est illum in laborum maiores minima nobis non, nostrum obcaecati possimus quisquam ratione sed sint sit unde.
+    </p>
 </div>
 
 <ul class="circles" style="z-index: -10">

@@ -72,6 +72,14 @@ public class AppController implements WebMvcConfigurer {
         return "index_klient";
     }
 
+    @RequestMapping("/index_klient_specified")
+    public String viewHomePageKlient2(Model model) {
+        List<Klient> listKlient = klientDAO.list2();
+        model.addAttribute("listKlient",listKlient);
+
+        return "index_klient_specified";
+    }
+
 
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("index");
@@ -82,6 +90,7 @@ public class AppController implements WebMvcConfigurer {
 
         registry.addViewController("/main_admin").setViewName("admin/main_admin");
         registry.addViewController("/main_user").setViewName("user/main_user");
+
     }
 
     @Controller
@@ -107,14 +116,6 @@ public class AppController implements WebMvcConfigurer {
     public String showUserPage(Model model) {
         return "user/main_user";
     }
-
-
-
-
-
-
-
-
 
 
 
@@ -313,6 +314,11 @@ public class AppController implements WebMvcConfigurer {
 
         return "redirect:/index_klient";
     }
+
+
+
+
+
 
     @RequestMapping("/delete_klient/{nr_klienta}")
     public String delete_klient(@PathVariable(name = "nr_klienta") int nr_klienta) {

@@ -32,6 +32,16 @@
                 <a class="nav-link" href="/main">Home <i class="fa-solid fa-house"></i></a>
             </li>
             <!--   DODAWANIE PRZYCISKOW DO NAV BARU    -->
+            <li>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Tables <i class="fa-solid fa-table"></i>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/index_klient_specified">Client (You)</a>
+                    </div>
+                </div>
+            </li>
         </ul>
         <div class="d-flex align-items-center">
             You are logged as user
@@ -45,8 +55,10 @@
     </div>
 </nav>
 
-<div id="box_form">
-    <h1 th:inline="text">Hello, <span th:remove="tag" sec:authentication="name">thymeleaf</span>!</h1>
+<div id="box_form" style="text-align: justify">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur dolor ipsum nesciunt obcaecati placeat. At blanditiis consectetur debitis expedita minus perferendis quibusdam tenetur voluptatibus. Cupiditate dicta excepturi nostrum quod recusandae.
+    </p>
 </div>
 
 <ul class="circles" style="z-index: -10">
